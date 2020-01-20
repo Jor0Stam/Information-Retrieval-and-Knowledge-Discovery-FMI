@@ -4,9 +4,12 @@ import board.Board;
 
 import java.awt.*;
 
+import static java.lang.Integer.max;
+import static java.lang.Integer.min;
+
 public class NPC {
-    private int alpha = Integer.MIN_VALUE;
-    private int beta = Integer.MAX_VALUE;
+    private int alpha = -2;
+    private int beta = 2;
     private int player = 0;
     private Board board;
     
@@ -38,7 +41,7 @@ public class NPC {
             if (board.getBoard()[i] == 0) {
                 copiedBoard = Board.copyBoard(board);
                 simulateCurrentPlayerMove(player, copiedBoard, i);
-                localResult = calculateOptimalMove(copiedBoard, switchPlayer(player));
+                localResult = calculateOptimalMove(copiedBoard, switchPlayer(player), this.alpha, this.beta);
                 if (resultBetterForPlayer(player, bestMoveValue, localResult)) {
                     bestMove = i;
                     bestMoveValue = localResult;
@@ -49,12 +52,12 @@ public class NPC {
         return new Point(bestMove / 3, bestMove % 3);
     }
 
-    private int calculateOptimalMove(Board board, int player) {
-        /*
-            @ Returns:
-             1 if O wins
-             -1 if X wins
-             0 if draw
+    private int calculateOptimalMove(Board board, int player, int alpha, int beta) {
+        /**
+         *  returns:
+         *     1 if O wins
+         *     -1 if X wins
+         *     0 if draw
          */
         Board copiedBoard;
         int localResult, bestMove = 0, bestMoveValue = (player == 1 ? -2 : 2);
@@ -65,12 +68,24 @@ public class NPC {
 
         for (int i = 0; i < 9; i++) {
             if (board.getBoard()[i] == 0) {
+
                 copiedBoard = Board.copyBoard(board);
                 simulateCurrentPlayerMove(player, copiedBoard, i);
-                localResult = calculateOptimalMove(copiedBoard, switchPlayer(player));
+                localResult = calculateOptimalMove(copiedBoard, switchPlayer(player), alpha, beta);
+
                 if (resultBetterForPlayer(player, bestMoveValue, localResult)) {
                     bestMove = i;
                     bestMoveValue = localResult;
+                }
+
+                if (player == 1) {
+                    alpha = max(bestMoveValue, alpha);
+                } else {
+                    beta = min(bestMoveValue, beta);
+                }
+
+                if ((player == 1 && alpha < beta) || (player == -1 && alpha > beta)) {
+                    break;
                 }
             }
         }
@@ -80,7 +95,8 @@ public class NPC {
         } else {
             board.playX(bestMove / 3, bestMove % 3);
         }
-        return calculateOptimalMove(board, switchPlayer(player));
+
+        return calculateOptimalMove(board, switchPlayer(player), alpha, beta);
     }
 
     private boolean resultBetterForPlayer(int player, int bestMove, int localResult) {

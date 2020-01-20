@@ -28,7 +28,7 @@ public class SalesmanSolver {
         this.populationSize = babyBoomersSize;
         this.selectionType = selectionType;
         this.reproductionSize = reproductionSize;
-        this.genomeSize = cities;
+        this.genomeSize = cities - 1;
 
         this.generationSize = 1000;
         this.maxEpochs = 200;

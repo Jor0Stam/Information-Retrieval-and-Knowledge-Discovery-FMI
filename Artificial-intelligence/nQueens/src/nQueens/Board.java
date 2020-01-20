@@ -10,17 +10,17 @@ public class Board {
 	private int size;
 	private int[] queens;
 	private int[] colConflicts;
-	private int[] mainDiagConflicts;
-	private int[] secondDiagConflicts;
+	private int[] mainDiagonalConflicts;
+	private int[] secondDiagonalConflicts;
 	private int timesTried = 0;
-	private boolean solved;
+	private boolean solved = false;
 	Random rand = new Random();
 	
 	public Board(int size) {
 		this.size = size;
 		this.colConflicts = new int[size];
-		this.mainDiagConflicts = new int[(2 * size) - 1];
-		this.secondDiagConflicts = new int[(2 * size) - 1];
+		this.mainDiagonalConflicts = new int[(2 * size) - 1];
+		this.secondDiagonalConflicts = new int[(2 * size) - 1];
 		this.queens = setRandomQueens();
 	}
 	
@@ -29,100 +29,99 @@ public class Board {
 		int newQueenCol;
 
 		Arrays.fill(this.colConflicts, 0);
-		Arrays.fill(this.mainDiagConflicts, 0);
-		Arrays.fill(this.secondDiagConflicts, 0);
+		Arrays.fill(this.mainDiagonalConflicts, 0);
+		Arrays.fill(this.secondDiagonalConflicts, 0);
 
 		for (int i = 0; i < this.size; i++) {
 			newQueenCol = rand.nextInt(this.size);
 			result[i] = newQueenCol;
 			this.colConflicts[newQueenCol]++;
-			this.mainDiagConflicts[i - newQueenCol + this.size - 1]++;
-			this.secondDiagConflicts[i + newQueenCol]++;
+			this.mainDiagonalConflicts[newQueenCol - i + this.size - 1]++;
+			this.secondDiagonalConflicts[i + newQueenCol]++;
 		}
 
 		return result;
 	}
 
 	public void solve() {
-		int currMaxConflict;
+		int rowOfMaxConflictedQueen;
 		do {
 			this.timesTried++;
-			currMaxConflict = getMaxConflictedQueen();
-
-			if (this.timesTried > 2 * this.size) {
+			rowOfMaxConflictedQueen = getRowOfMaxConflictedQueen();
+			if (this.solved) {
+				break;
+			} else if (this.timesTried > 2 * this.size) {
 				this.queens = setRandomQueens();
 				this.timesTried = 0;
-			} else if (!this.solved){
-				this.updateConflicts(currMaxConflict);
+			} else {
+				this.moveMaxConflictedQueen(rowOfMaxConflictedQueen);
 			}
 		}
 		while (!this.solved);
 	}
 
-	private void updateConflicts(int currMaxConflict) {
-		this.colConflicts[this.queens[currMaxConflict]]--;
-		this.mainDiagConflicts[currMaxConflict - this.queens[currMaxConflict] + this.size - 1]--;
-		this.secondDiagConflicts[currMaxConflict + this.queens[currMaxConflict]]--;
-		this.queens[currMaxConflict] = this.getMinConflicts(currMaxConflict);
+	private void moveMaxConflictedQueen(int rowOfMaxConflictedQueen) {
+		int newColOfQueen = this.getColWithMinConflictsForRow(rowOfMaxConflictedQueen);
+
+		// Clean old position of queen
+		this.colConflicts[this.queens[rowOfMaxConflictedQueen]]--;
+		this.mainDiagonalConflicts[this.queens[rowOfMaxConflictedQueen] - rowOfMaxConflictedQueen + this.size - 1]--;
+		this.secondDiagonalConflicts[rowOfMaxConflictedQueen + this.queens[rowOfMaxConflictedQueen]]--;
+
+		this.queens[rowOfMaxConflictedQueen] = newColOfQueen;
+		// Update new conflicts
+		this.colConflicts[this.queens[rowOfMaxConflictedQueen]]++;
+		this.mainDiagonalConflicts[newColOfQueen - rowOfMaxConflictedQueen + this.size - 1]++;
+		this.secondDiagonalConflicts[rowOfMaxConflictedQueen + newColOfQueen]++;
 	}
 
-	private int getMaxConflictedQueen() {
-		int result = 0;
+	private int getRowOfMaxConflictedQueen() {
+		int rowOfMaxConflictedQueen = 0;
 		int conflictsForI;
-		this.solved = true;
 
+		boolean isReallySolved = true;
 		for (int i = 0; i < this.size; i++) {
-			conflictsForI = getConflicts(i, this.queens[i]);
-			this.solved = this.solved & conflictsForI == 0;
-			if (result < conflictsForI) {
-				result = i;
+			conflictsForI = getConflicts(i, this.queens[i]); // getConflicts(queen)
+			if (getConflicts(rowOfMaxConflictedQueen, this.queens[rowOfMaxConflictedQueen]) < conflictsForI) {
+				rowOfMaxConflictedQueen = i;
+			}
+
+			if (conflictsForI > 0) {
+				isReallySolved = false;
 			}
 		}
-
-		for (int i = 0; i < this.size; i++) {
-			conflictsForI = getConflicts(i, this.queens[i]);
-			if (result <= conflictsForI) {
-				result = rand.nextInt(2) == 1 ? i : result;
-			}
+		if (isReallySolved) {
+			this.solved = true;
 		}
-		if (result == -1) {
-			printSolution();
-		}
-
-		return result;
+		return rowOfMaxConflictedQueen;
 	}
 
-	private int getMinConflicts(int currMax) {
-		int result = this.size - 1;
+	private int getColWithMinConflictsForRow(int row) {
+		int colWithMinConflictsForRow = this.size - 1;
+		int numOfConflicts = 0;
 
 		for (int i = 0; i < this.size; i++) {
-			if (getConflicts(currMax, i) < result) {
-				result = i;
+			if (getConflicts(row, i) < getConflicts(row, colWithMinConflictsForRow)) {
+				colWithMinConflictsForRow = i;
 			}
 		}
 
-		for (int i = 0; i < this.size; i++) {
-			if (getConflicts(currMax, i) <= result) {
-				result = rand.nextInt(2) == 1 ? i : result;
-			}
-		}
-
-		return result;
+		return colWithMinConflictsForRow;
 	}
 	
 	private int getConflicts(int row, int col) {
-		int result = 0;
+		int countConflictForQueen = 0;
 
-		result += this.colConflicts[row];
-		result += this.mainDiagConflicts[row - col + this.size - 1];
-		result += this.mainDiagConflicts[row + col];
+		countConflictForQueen += Math.max(this.colConflicts[col] - 1, 0);
+		countConflictForQueen += Math.max(this.mainDiagonalConflicts[col - row + this.size - 1] - 1, 0);
+		countConflictForQueen += Math.max(this.secondDiagonalConflicts[row + col] - 1, 0);
 
-		return result;
+		return countConflictForQueen;
 	}
 
 	public void printSolution() {
 		char[] field = new char[(int) Math.pow(size, 2)];
-		field = this.populateField(field);
+		this.populateField(field);
 
 		for (int i = 0; i < this.size; i++) {
 			for (int j = 0; j < this.size; j++) {
@@ -132,7 +131,7 @@ public class Board {
 		}
 	}
 
-	private char[] populateField(char[] field) {
+	private void populateField(char[] field) {
 		for (int i = 0; i < (int) Math.pow(size, 2); i++) {
 			if (this.queens[i / size] == i % this.size) {
 				field[i] = QUEEN;
@@ -140,7 +139,5 @@ public class Board {
 				field[i] = EMPTY_SPACE;
 			}
 		}
-
-		return field;
 	}
 }
