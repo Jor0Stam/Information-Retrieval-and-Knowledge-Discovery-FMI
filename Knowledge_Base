@@ -1,0 +1,122 @@
+Query 1:
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+select ?wineType where {
+	?wineType vin:hasBody vin:Full.
+    ?wineType vin:locatedIn ?location.
+   	?	Type vin:hasFlavor ?flavor;
+    filter(?location = vin:NapaRegion)
+    filter(?flavor != vin:Strong)
+}
+# Shows all wines that are from Napa and are not with a strong flavor
+
+Qquery 2:
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+select * where { 
+	?wine vin:hasMaker ?winery .
+    ?wine vin:hasSugar ?sugarType .
+    ?wine vin:locatedIn ?location .
+    filter(!isLiteral(?sugarType))
+    filter(?sugarType != vin:Dry)
+    filter(?location = vin:GermanyRegion)
+}
+# Shows all Non dry wines from Germany
+
+Query 3:
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+select ?wine where { 
+	{
+        ?wine vin:hasBody ?wineBody.
+        ?wine vin:hasMaker vin:Selaks.
+        filter(?wineBody = vin:Medium)
+    } union {
+        ?wine vin:hasFlavor ?flavor.
+        ?wine vin:locatedIn vin:NapaRegion
+        filter(?flavor != vin:Moderate)
+    }
+}
+# Shows all wines that have medium body and are created by Selaks joined with all wines from Napa region that are not with moderate flavor 
+
+Query 4:
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+select * where { 
+    ?vintage vin:hasVintageYear ?vintageYear.
+    bind("Yup" as ?shouldNotBeOlderThanUrDate).
+}
+# Bind a new knowledge logically with known vintage
+
+Query 5:
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+select ?wine where { 
+	{
+        ?wine rdf:type vin:DessertWine.
+    } minus {
+        ?wine vin:hasFlavor ?flavor.
+        filter(?flavor = vin:Strong)
+    }
+}
+# Shows all wines that are dessert wines (Sweet Riesling is a type of dessert wine) and are not with strong flavor
+
+
+Query6:
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+select ?wine ?wineRecommendation where { 
+	?wine vin:locatedIn ?region.
+    filter(?region = vin:USRegion)
+    bind("Generally bad Wine" as ?wineRecommendation).
+} 
+# Shows all wines from US and gives us a lil' insight into their flavour
+
+Query 7:
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select * where { 
+	?wine rdf:type vin:PinotNoir .
+    ?wine vin:hasMaker ?maker.
+    filter(?maker = vin:LaneTanner)
+}
+# Shows all Pinot Noir created by LaneTanner
+
+
+Query8:
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+select * where { 
+	?wine rdf:type vin:PetiteSyrah .
+    ?wine vin:hasFlavor ?flavor.
+    filter(?flavor = vin:Moderate)
+}
+# Shows all Petite Syrah with moderate flavor
+
+Query9:
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+select * where { 
+	?frenchRegion vin:locatedIn vin:FrenchRegion.
+} limit 100 
+# Shows all french regions
+
+Query10:
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+select ?wine { 
+	?wine vin:hasSugar ?sugar.
+    ?wine vin:hasBody vin:Medium.
+    ?wine vin:locatedIn vin:USRegion
+    filter(?sugar = vin:Dry)
+} ORDER BY DESC(?wine)
+# Shows all medium dry wines in reversed ordered 
+
+Improve the ontology(N/A)
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX owl: <http://www.test123.com/test123-ontology.owl#> 
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> 
+PREFIX oo:  <http://www.w3.org/2002/07/owl#> 
+PREFIX vin: <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#>
+
+INSERT 
+{ 
+   vin:mavrud owl:Class vin:Wine . 
+   vin:mavrud vin:locatedIn vin:BulgariaRegion .
+   vin:mavrud vin:Flavor 'Delicious' .
+} where {
+}
