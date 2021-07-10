@@ -1,0 +1,513 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/gasta/ontologies/2021/1/gStamenov-26126"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/gasta/ontologies/2021/1/gStamenov-26126">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Black_Metal_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Death_Metal_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EDM_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Electronic_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Groove_Metal_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hard_Rock_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#House_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Jazz_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#K_Pop_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Metal_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Pop_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Punk_Rock_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Rock_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Song_Creator"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Song_Lyrics_Author"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Song_Mix_And_Masterer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Song_Musician"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Song_Producer"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Symphonic_Metal_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Techno_Song"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Trash_Metal_Song"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Featuring"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Song_Influenced_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Song_Inspired_By"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#can_play_a_musical_instrument"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#creates_music"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#employs_electronic_music_instruments"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has_song_creator"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#mastering_music"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#mixing_samples"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#oversees_all_aspects"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#performed_by"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#write_lyrics"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Length"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Song"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Song_creator"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#audio_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#beat_tempo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#complexity"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#created_by"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#electric_guitar"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#ethic"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#guitar_solo_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#is_improvised"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#lyrics"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#lyrics_subject"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#music_instruments"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#originated_from"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#overall_feel"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#pace"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#rhytms__type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#sound_type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#tempo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#theme"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#vocals"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#year_of_release"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Metallica"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Test_Individual"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Until_It_sleeps"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Black_Metal_Song"/>
+        <Class IRI="#Metal_Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Death_Metal_Song"/>
+        <Class IRI="#Metal_Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#EDM_Song"/>
+        <Class IRI="#Electronic_Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Electronic_Song"/>
+        <Class IRI="#Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Groove_Metal_Song"/>
+        <Class IRI="#Metal_Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hard_Rock_Song"/>
+        <Class IRI="#Rock_Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#House_Song"/>
+        <Class IRI="#Electronic_Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Jazz_Song"/>
+        <Class IRI="#Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#K_Pop_Song"/>
+        <Class IRI="#Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Metal_Song"/>
+        <Class IRI="#Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Pop_Song"/>
+        <Class IRI="#Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Punk_Rock_Song"/>
+        <Class IRI="#Rock_Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Rock_Song"/>
+        <Class IRI="#Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Song_Lyrics_Author"/>
+        <Class IRI="#Song_Creator"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Song_Mix_And_Masterer"/>
+        <Class IRI="#Song_Creator"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Song_Musician"/>
+        <Class IRI="#Song_Creator"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Song_Producer"/>
+        <Class IRI="#Song_Creator"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Symphonic_Metal_Song"/>
+        <Class IRI="#Metal_Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Techno_Song"/>
+        <Class IRI="#Electronic_Song"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Trash_Metal_Song"/>
+        <Class IRI="#Metal_Song"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Song_Creator"/>
+        <NamedIndividual IRI="#Metallica"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Jazz_Song"/>
+        <NamedIndividual IRI="#Test_Individual"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Trash_Metal_Song"/>
+        <NamedIndividual IRI="#Until_It_sleeps"/>
+    </ClassAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#Song_Influenced_by"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#Song_Inspired_By"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#has_song_creator"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#Song_Influenced_by"/>
+    </SymmetricObjectProperty>
+    <SymmetricObjectProperty>
+        <ObjectProperty IRI="#Song_Inspired_By"/>
+    </SymmetricObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#Song_Influenced_by"/>
+    </TransitiveObjectProperty>
+    <TransitiveObjectProperty>
+        <ObjectProperty IRI="#Song_Inspired_By"/>
+    </TransitiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Featuring"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Song_Influenced_by"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Song_Inspired_By"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#can_play_a_musical_instrument"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#creates_music"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#employs_electronic_music_instruments"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has_song_creator"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#mastering_music"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#mixing_samples"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#oversees_all_aspects"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#performed_by"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#write_lyrics"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Featuring"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Song_Influenced_by"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Song_Inspired_By"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#can_play_a_musical_instrument"/>
+        <Class IRI="#Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#creates_music"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#employs_electronic_music_instruments"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#music_instruments"/>
+            <Datatype abbreviatedIRI="xsd:Name"/>
+        </DataSomeValuesFrom>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has_song_creator"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#mastering_music"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#mixing_samples"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#oversees_all_aspects"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#oversees_all_aspects"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#performed_by"/>
+        <Class IRI="#Song_Creator"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#write_lyrics"/>
+        <Class IRI="#Song"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Length"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#audio_type"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#beat_tempo"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#complexity"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#created_by"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#electric_guitar"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#ethic"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#guitar_solo_type"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#is_improvised"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#lyrics"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#lyrics_subject"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#music_instruments"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#originated_from"/>
+        <DataProperty IRI="#Song_creator"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#overall_feel"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#pace"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#rhytms__type"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#sound_type"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#tempo"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#theme"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#vocals"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#year_of_release"/>
+        <DataProperty IRI="#Song"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#Length"/>
+        <Class IRI="#Song"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#created_by"/>
+        <Class IRI="#Song_Creator"/>
+    </DataPropertyDomain>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
